@@ -1,0 +1,45 @@
+<%= form_for(@invoice || @invoice = Tweet.new) do |f| %>
+    <% if @invoice.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+            <ul>
+                <% @tweet.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+<% end %>
+
+<% if current_user %>
+
+<%= f.hidden_field :user_id, :value => current_user.id %>
+
+<p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+</p>
+
+<p>
+    <%= f.label :company %><br />
+    <%= f.text_field :company %>
+</p>
+
+<p>
+    <%= f.label :hourly_rate %><br />
+    <%= f.number_field :hourly_rate %>
+</p>
+
+<p>
+    <%= f.label :hours %><br />
+    <%= f.number_field :hours %>
+</p>
+
+<p>
+    <%= f.submit %>
+</p>
+
+<% end %>
+<% end %>
+    
+
+

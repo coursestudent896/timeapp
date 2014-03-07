@@ -1,0 +1,55 @@
+<% if !current_user %>
+<h6> You cannot access this page because you are not logged in. </h6>
+<% end %>
+
+<% if current_user && current_user.invoice.nil? %>
+<h6> You cannot access this page because you have not made an invoice yet. </h6>
+<% end %>
+
+
+<% if current_user && !current_user.invoice.nil? %>
+
+<h5>Your current pay due is</h5><%= current_user.invoice.pay_due.to_s %></h5>
+
+<%= form_for current_user.invoice do |f| %>
+
+<% if @invoice.errors.any? %>
+<div class="error_messages">
+	<h2>Form is invalid</h2>
+	<u1>
+	<% for message in @invoice.errors.full_messages %>
+	<li><%= message %></li>
+	<% end %>
+</ul>
+</div>
+<% end %>
+
+<%= f.hidden_field :user_id, :value => current_user.id %>
+
+<p>
+	<%= f.label :name %><br />
+	<%= f.text_field :name %>
+</p>
+
+<p>
+	<%= f.label :company %><br />
+	<%= f.text_field :company %>
+</p>
+
+<p>
+	<%= f.label :hourly_rate %><br />
+	<%= f.number_field :hourly_rate %>
+</p>
+
+<p>
+	<%= f.label :hours %><br />
+	<%= f.number_field :hours %>
+</p>
+
+<p>
+	<%= f.submit %>
+</p>
+
+<% end %>
+
+<% end %>

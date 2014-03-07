@@ -1,0 +1,6 @@
+      invoke  active_record
+      create    db/migrate/20140203204257_create_invoices.rb
+      create    app/models/invoice.rb
+      invoke    test_unit
+      create      test/models/invoice_test.rb
+      create      test/fixtures/invoices.yml
