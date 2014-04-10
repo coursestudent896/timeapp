@@ -19,10 +19,16 @@
 
     <% end %>
 
-	<% if current_user && current_user.invoice.nil? %>
-	  <%= link_to "Create a new invoice", new_invoice_path %>
+    <% if current_user %>
+    <% if current_user.verifiedstatus %>
+    <% #if current_user.invoice.nil? %>
+
+	 <%= link_to "Create a new invoice", new_invoice_path %>
+	 <% end %>
 	  <% end %>
-	  <% if current_user && !current_user.invoice.nil? %>
+	  
+
+    <% if current_user && !current_user.invoice.nil? %>
 	  <%= link_to "Edit your existing invoice", edit_invoice_path %>
 	  <% end %>
 	

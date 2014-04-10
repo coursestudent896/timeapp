@@ -6,6 +6,10 @@ class SessionsController < ApplicationController
 
   end
 
+  def activate
+    
+  end
+
      # POST login action 
   def create
   	 @user = User.find_by_email(params[:email])

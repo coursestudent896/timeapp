@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
 	validates :password, :confirmation => true
 
+
+
 	# before_save :encrypt_password
 
 	# def self.authenticate 
@@ -26,5 +28,18 @@ class User < ActiveRecord::Base
     	# end
     # end
 
+
+def confirm!
+	self.update_attributes(
+       :unique_token => nil,
+       :verifiedstatus => true
+		)
 end
 
+
+
+def generate_unique_token!
+	self.update_attribute(:unique_token, SecureRandom.hex(40))
+end
+
+end

@@ -8,7 +8,7 @@ Timeapp::Application.routes.draw do
   get "new_invoice" => "invoices#new", :as => "new_invoice"
   match "users/edit" => "users#edit", as: "edit_user", via: [:get, :post]
   match "invoices/edit" => "invoices#edit", as: "edit_invoice", via: [:get, :post]
-
+  match "users/confirm/:token" => "users#confirm", as: "confirm_your_email_user", via: [:get, :post]
 
   resources :users
   

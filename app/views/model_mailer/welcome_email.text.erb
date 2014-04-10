@@ -1,0 +1,7 @@
+Welcome to http://tranquil-headland-2347.herokuapp.com, <%= @user.email %>
+===============================================
+ 
+Confirm your email here: <%= confirm_your_email_user_url(token: @user.unique_token) %>
+
+ 
+Thanks for joining and have a great day!
